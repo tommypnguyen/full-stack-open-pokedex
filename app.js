@@ -6,6 +6,16 @@ const PORT = process.env.PORT || 5001
 
 app.use(express.static('dist'))
 
+app.get('/health', (req, res) => {
+  throw 'error...'
+  // eslint-disable-next-line no-unreachable
+  res.send('ok')
+})
+
+app.get('version', (req, res) => {
+  res.send('v1 is being deployed')
+})
+
 app.listen(PORT, () => {
   console.log(`Server started running on port ${PORT}`)
 })

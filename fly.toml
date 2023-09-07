@@ -25,6 +25,16 @@ mounts = []
   internal_port = 8080
   processes = ["app"]
   protocol = "tcp"
+  
+  [services.http_checks]
+    interval = 10000
+    grace_period = "10s"
+    method = "get"
+    path = "/health"
+    protocol = "http"
+    timeout = 2000
+    tls_skip_verify = false
+    [services.http_checks.headers]
 
   [services.concurrency]
     hard_limit = 25
