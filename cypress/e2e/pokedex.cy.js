@@ -6,7 +6,7 @@ describe('Pokedex', function() {
   }),
   it('navigate to pokemon page', function() {
     cy.visit('')
-    cy.visit('/pokemon/charmeleon')
+    cy.contains('charmeleon').click()
     cy.contains('charmeleon')
     cy.contains('blaze')
   })
