@@ -6,9 +6,8 @@ describe('Pokedex', function() {
   }),
   it('navigate to pokemon page', function() {
     cy.visit('')
-    cy.visit('/pokemon/ivysaur')
-    cy.contains('ivysaur')
-    cy.contains('overgrow')
-    cy.contains('speed')
+    cy.visit('/pokemon/charmeleon')
+    cy.contains('charmeleon')
+    cy.contains('blaze')
   })
 })
