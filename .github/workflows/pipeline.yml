@@ -55,7 +55,7 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: Commit ${{ toJson(github.head_commit.url) }} by ${{ toJson(github.head_commit.author.user) failed }}
+          details: Commit ${{ toJson(github.head_commit.url) }} by ${{ toJson(github.head_commit.author.user) }} failed
           webhookUrl: $DISCORD_WEBHOOK
 
 
