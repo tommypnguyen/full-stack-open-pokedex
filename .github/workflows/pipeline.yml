@@ -43,7 +43,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         env:
           USER: ${{ toJson(github.actor) }}
-        if: step.build.outcome == 'success'
+        if: steps.build.outcome == 'success'
         with:
           severity: info
           details: Successfully deployed at https://hidden-bush-2663.fly.dev/ by ${{ github.actor }}
