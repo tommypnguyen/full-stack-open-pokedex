@@ -45,7 +45,7 @@ jobs:
         if: success()
         with:
           severity: info
-          details: Successfully deployed at https://hidden-bush-2663.fly.dev/ by $USER
+          details: Successfully deployed at https://hidden-bush-2663.fly.dev/ by ${{ github.actor }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test failure
         uses: rjstone/discord-webhook-notify@v1
