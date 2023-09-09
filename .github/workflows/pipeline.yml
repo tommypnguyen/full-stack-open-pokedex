@@ -53,7 +53,7 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: Commit ${{ github.head_commit.url }} by ${{ github.head_commit.author.user }} failed
+          details: Commit ${{ github.commits[0].url }} by ${{ github.commits[0].author.username }} failed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
