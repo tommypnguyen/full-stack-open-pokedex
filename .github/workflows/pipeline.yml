@@ -34,6 +34,7 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5001
       - name: deploy app
+        id: deploy
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         if: ${{ github.event_name == 'push' && !(contains(join(github.event.commits.*.message, ', '), '#skip')) }}
@@ -42,7 +43,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         env:
           USER: ${{ toJson(github.actor) }}
-        if: success()
+        if: step.build.outcome == 'success'
         with:
           severity: info
           details: Successfully deployed at https://hidden-bush-2663.fly.dev/ by ${{ github.actor }}
@@ -52,7 +53,7 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: Commit ${{ toJson(github.head_commit.url) }} by ${{ toJson(github.head_commit.author.user) }} failed
+          details: Commit ${{ github.head_commit.url }} by ${{ github.head_commit.author.user }} failed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
